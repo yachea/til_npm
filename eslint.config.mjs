@@ -26,6 +26,7 @@ export default defineConfig([
       "prettier/prettier": "warn",
       "no-var": "warn",
       "no-unused-vars": "error", // ✅ 선언했지만 사용하지 않으면 에러
+      "react/react-in-jsx-scope": "off",
     },
     settings: {
       react: {
