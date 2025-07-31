@@ -1,13 +1,13 @@
-import Header from "./components/layout/Header";
-import JoinPage from "./pages/JoinPage";
-import Slide from "./pages/Slide";
+import CounterAtom from "./components/CounterAtom";
+import TodoList from "./components/TodoList";
 
 function App() {
   return (
     <div>
-      <Header />
       {/* <Slide /> */}
-      <JoinPage />
+      {/* <JoinPage /> */}
+      <CounterAtom />
+      <TodoList />
     </div>
   );
 }
