@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { getKakaoLoginLink } from "../kko/kkoapi";
 import { useRecoilState } from "recoil";
 import { KKOLgoinAtom } from "../atoms/kkologinAton";
+import { getGoogleLoginLink } from "../google/googleapi";
 
 function LoginPage() {
   // js 자리
@@ -21,6 +22,10 @@ function LoginPage() {
     });
     navihate("/");
   };
+  const googleLogin = () => {
+    getGoogleLoginLink();
+  };
+
   return (
     <div>
       <h1>LoginPage</h1>
@@ -29,6 +34,9 @@ function LoginPage() {
       ) : (
         <Link to={kkoLoginUrl}>카카오 로그인</Link>
       )}
+      <div>
+        <button onClick={googleLogin}>구글로그인</button>
+      </div>
     </div>
   );
 }
