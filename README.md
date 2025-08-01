@@ -1,400 +1,292 @@
-# 카카오 로그인
+# OpenAi
 
-- CRA 로 생성한 경우
-  - 환경설정 즉, `.env` 사용법이 다름.
-- Vite 로 리액트 프로젝트 생성한 경우
-  - 환경설정 즉, `.env` 사용법이 다름.
+- https://platform.openai.com/docs/overview
 
-## 1. 카카오 개발자 등록하기 / 로그인하기
+## 1. 회원가입 하기
 
-- https://developers.kakao.com/
-- https://developers.kakao.com/docs/latest/ko/kakaologin/rest-api
+- https://platform.openai.com/docs/overview
+- `구글 계정`이나 이메일 주소로 회원가입
+- 이메일 인증 처리
 
-## 2. 새로운 애플리케이션 등록하기
+## 2. 결제 등록하기
 
-- 상단의 주메뉴에서 `앱` 선택 후 이동
-  <img width="1083" height="375" alt="Image" src="https://github.com/user-attachments/assets/a2395374-6444-4eb7-b1b4-36feb37aee80" />
+- https://platform.openai.com/settings/organization/billing/overview
+- Billing > Payment methods 카드등록
+- Add payment method 에서 여러개 가능함.
 
-- 내용 작성하기
-  <img width="631" height="727" alt="Image" src="https://github.com/user-attachments/assets/701deb54-afcf-4171-824f-7f791ef896b2" />
-  <img width="614" height="655" alt="Image" src="https://github.com/user-attachments/assets/772477dc-810d-498a-a3f9-4da3eda22904" />
-- 목록 확인하기
-  <img width="1260" height="535" alt="Image" src="https://github.com/user-attachments/assets/f0aa673c-b990-4964-8fc9-dd7072e795a8" />
-- 비즈 앱 등록하기
-  <img width="1535" height="773" alt="Image" src="https://github.com/user-attachments/assets/191234b5-4e6f-4966-9d7b-7d4812a312c4" />
-- 동의하기
-  <img width="1538" height="732" alt="Image" src="https://github.com/user-attachments/assets/13248e49-bd92-402b-867b-7866b9b3b54c" />
-- 비즈 앱 전환하기
-  <img width="1529" height="750" alt="Image" src="https://github.com/user-attachments/assets/c98f538b-a787-4b54-8727-2f54a565797a" />
-  <img width="1186" height="727" alt="Image" src="https://github.com/user-attachments/assets/ccdb1f70-83fe-4c96-8f27-0b37f0d3cf1e" />
-- 복사하기
-  <img width="684" height="351" alt="Image" src="https://github.com/user-attachments/assets/bbe07e87-d8e0-4214-873d-688b3df09b63" />
+## 3. API 키 발급하기
 
-## 3. Rest API 및 JS 키 관리
+- 카드등록 완료 후 https://platform.openai.com/api-keys 에서 관리
+- 화면 오른쪽 상단의 Create new Secret key 버튼으로 여러개 등록 가능
+- key 값은 한번만 보여주므로 반드시 복사해서 별도로 보관
+- 노출이 되면 변경이 되지않기때문에 삭제하는 수밖에 없다.
 
-- `외부노출 금지`
-- / 폴더에 `.env` 파일 생성
-- `생성되는 파일 위치 절대 주의`
-  <img width="197" height="284" alt="Image" src="https://github.com/user-attachments/assets/718223c9-1521-454e-8040-933d4c2faeeb" />
+## 4. 실습 (감정 분석 서비스)
 
-### 3.1. 접두어는 `REACT_APP_` 으로 `약속`됨.
-
-- 예) Next.js 프로젝트에서는 `NEXT_APP_` 으로 약속됨.
-- 예) Vite 프로젝트에서는 `VITE_` 로 약속됨.
-- ...\_APP 뒤에는 마음대로 해도됨.
-
-```txt
-REACT_APP_KKO_LOGIN_REST_API_KEY=본인키
-REACT_APP_KKO_LOGIN_JS_API_KEY=본인키
+```env
+REACT_APP_OPENAI_API_KEY=REACT_APP_OPENAI_API_KEY=
 ```
-
-### 3.2. `.gitignore` 확인
-
-- `.env` 내용으로 작성 확인
-  <img width="284" height="517" alt="Image" src="https://github.com/user-attachments/assets/8dd5ae05-b36b-43d3-8873-6d033d3f1921" />
-
-## 4. 카카오 로그인 플랫폼 설정하기
-
-<img width="917" height="794" alt="Image" src="https://github.com/user-attachments/assets/51fd32a0-0585-48f1-a064-7a9d6fdbe214" />
-
-### 4.1. 리다이랙트 URL 설정
-
-- http://localhost:3000 : CRA 버전
-- http://localhost:5173 : Vite 버전
-- https://www.도메인.com : 개인 도메인
-  <img width="675" height="516" alt="Image" src="https://github.com/user-attachments/assets/dfab61fd-c124-4b04-b5d5-d6e523edc5ab" />
-  <img width="723" height="262" alt="Image" src="https://github.com/user-attachments/assets/fb592316-2cf6-4553-a254-211fb5c1856b" />
-
-## 5. 동의 항목 설정
-
-<img width="1474" height="602" alt="Image" src="https://github.com/user-attachments/assets/51bbb4db-db38-4e08-b186-60ad15e57b60" />
-<img width="621" height="734" alt="Image" src="https://github.com/user-attachments/assets/992a9763-5a70-4098-87b9-0ff5ce570a3d" />
-<img width="1422" height="516" alt="Image" src="https://github.com/user-attachments/assets/67a9312a-d62c-48a1-8dbb-af76a3635cef" />
-
-## 6. 카카오 로그인 구현
-
-- /src/kko 폴더 생성
-- /src/kko/kkoapi.js 생성
-
-### 6.1. 1단계
 
 ```js
-// git 에 key 값 공개금지
-const rest_api_key = process.env.REACT_APP_KKO_LOGIN_REST_API_KEY;
-// 카카오 로그인 성공시 이동할 URL
-const redirect_uri = "http://localhost:3000/member/kko";
-// 카카오 로그인시 API 호출 경로 : token 활용
-const auth_code_path = "https://kauth.kakao.com/oauth/authorize";
-// 카카오 로그인 이후 사용자 정보 API 경로
-const kko_user_api = "https://kapi.kakao.com/v2/user/me";
-// 카카오 로그인 시도시 활용할 URL 자동 생성
-export const getKakaoLoginLink = () => {
-  const kakaoURL = `${auth_code_path}?client_id=${rest_api_key}&redirect_uri=${redirect_uri}&response_type=code`;
-  return kakaoURL;
-};
-```
-
-### 6.2. 2단계 : access Token 활용
-
-- 정보 호출
-
-```js
-// access 토큰 요청
-const access_token_url = `https://kauth.kakao.com/oauth/token`;
-export const getAccessToken = async authCode => {
-  const params = new URLSearchParams({
-    grant_type: "authorization_code",
-    client_id: rest_api_key,
-    redirect_uri: redirect_uri,
-    code: authCode,
-  });
-
-  const response = await fetch(access_token_url, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded;charset=utf-8",
-    },
-    body: params.toString(),
-  });
-
-  if (!response.ok) {
-    const errorData = await response.json();
-    console.error("토큰 요청 실패:", errorData);
-    throw new Error("Access Token 요청 실패");
-  }
-
-  const data = await response.json();
-  return data.access_token;
-};
-
-// 사용자 정보 요청
-export const getMemberWithAccessToken = async accessToken => {
-  try {
-    const response = await fetch(kko_user_api, {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-        "Content-Type": "application/x-www-form-urlencoded;charset=utf-8",
-      },
-    });
-
-    if (!response.ok) {
-      const errorData = await response.json();
-      console.error("사용자 정보 요청 실패:", errorData);
-      return errorData;
-    }
-
-    const userData = await response.json();
-    console.log(userData);
-    return userData;
-  } catch (error) {
-    console.error("fetch 에러:", error);
-    return error;
-  }
-};
-```
-
-### 6.3. 전체 코드 (`추후 axios 로 변경 권장`)
-
-```js
-// git 에 key 값 공개금지
-const rest_api_key = process.env.REACT_APP_KKO_LOGIN_REST_API_KEY;
-
-// 카카오 로그인 성공시 이동할 URL
-const redirect_uri = "http://localhost:3000/member/kko";
-
-// 카카오 로그인시 API 호출 경로 : token 활용
-const auth_code_path = "https://kauth.kakao.com/oauth/authorize";
-
-// 카카오 로그인 이후 사용자 정보 API 경로
-const kko_user_api = "https://kapi.kakao.com/v2/user/me";
-
-// 카카오 로그인 시도시 활용할 URL 자동 생성
-export const getKakaoLoginLink = () => {
-  const kakaoURL = `${auth_code_path}?client_id=${rest_api_key}&redirect_uri=${redirect_uri}&response_type=code`;
-  return kakaoURL;
-};
-
-// access 토큰 요청
-const access_token_url = `https://kauth.kakao.com/oauth/token`;
-export const getAccessToken = async authCode => {
-  const params = new URLSearchParams({
-    grant_type: "authorization_code",
-    client_id: rest_api_key,
-    redirect_uri: redirect_uri,
-    code: authCode,
-  });
-
-  const response = await fetch(access_token_url, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded;charset=utf-8",
-    },
-    body: params.toString(),
-  });
-
-  if (!response.ok) {
-    const errorData = await response.json();
-    console.error("토큰 요청 실패:", errorData);
-    throw new Error("Access Token 요청 실패");
-  }
-
-  const data = await response.json();
-  return data.access_token;
-};
-
-// 사용자 정보 요청
-export const getMemberWithAccessToken = async accessToken => {
-  try {
-    const response = await fetch(kko_user_api, {
-      method: "GET",
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-        "Content-Type": "application/x-www-form-urlencoded;charset=utf-8",
-      },
-    });
-
-    if (!response.ok) {
-      const errorData = await response.json();
-      console.error("사용자 정보 요청 실패:", errorData);
-      return errorData;
-    }
-
-    const userData = await response.json();
-    console.log(userData);
-    return userData;
-  } catch (error) {
-    console.error("fetch 에러:", error);
-    return error;
-  }
-};
-```
-
-### 6.4. 코드 반영
-
-- /src/pages/LoginPage.jsx 생성
-
-```jsx
-import { Link } from "react-router-dom";
-import { getKakaoLoginLink } from "../kko/kkoapi";
-
-function LoginPage() {
-  // js 자리
-  // 카카오 로그인 URL 만들기
-  const kkoLoginUrl = getKakaoLoginLink();
-  console.log(kkoLoginUrl);
-  // jsx 자리
-  return (
-    <div>
-      <h1>LoginPage</h1>
-      <Link to={kkoLoginUrl}>카카오 로그인</Link>
-    </div>
-  );
-}
-
-export default LoginPage;
-```
-
-- /src/pages/member 폴더 생성
-- /src/pages/member/After.jsx 파일 생성
-
-```jsx
-import { useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
-import { getAccessToken, getMemberWithAccessToken } from "../../kko/kkoapi";
-
-const After = () => {
-  // 사용자 정보 관리
-  const [userInfo, setUserInfo] = useState(null);
-
-  // 카카오 인증키 알아내기
-  const [URLSearchParams, setURLSearchParams] = useSearchParams();
-  const authCode = URLSearchParams.get("code");
-
-  // 인가 키를 받아서 액세스 토큰을 요청한다.
-  const getAccessTokenCall = async () => {
-    const accessKey = await getAccessToken(authCode);
-    // console.log("accessKey : ", accessKey);
-    // 사용자 정보 호출
-    const info = await getMemberWithAccessToken(accessKey);
-    console.log(info);
-    setUserInfo(info);
-  };
-
-  useEffect(() => {
-    getAccessTokenCall();
-  }, [authCode]);
-  return (
-    <div>
-      <h1>KKO 로그인 후 </h1>
-      <h2>{authCode}</h2>
-      <div>닉네임 : {userInfo?.kakao_account.profile.nickname}</div>
-      <div>이메일 : {userInfo?.kakao_account.email}</div>
-      <div>
-        <img src={userInfo?.kakao_account.profile.thumbnail_image_url} />
-      </div>
-    </div>
-  );
-};
-
-export default After;
-```
-
-#### 6.4.1. Router 셋팅
-
-- /src/App.js
-
-```js
-import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
-import LoginPage from "./pages/LoginPage";
-import After from "./pages/member/After";
+import React, { useState } from "react";
+import "./App.css";
 
 function App() {
+  const [mood, setMood] = useState("");
+  const [analysis, setAnalysis] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleSubmit = async e => {
+    e.preventDefault();
+    if (!mood.trim()) return;
+
+    setIsLoading(true);
+    setAnalysis("");
+
+    try {
+      const response = await fetch(
+        "https://api.openai.com/v1/chat/completions",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${process.env.REACT_APP_OPENAI_API_KEY}`,
+          },
+          body: JSON.stringify({
+            model: "gpt-3.5-turbo",
+            messages: [
+              {
+                role: "system",
+                content:
+                  "당신은 감정 분석 전문가입니다. 사용자의 기분을 분석하고 따뜻하고 건설적인 조언을 제공해주세요. 한국어로 답변해주세요.",
+              },
+              {
+                role: "user",
+                content: `다음과 같은 기분을 분석해주세요: "${mood}"`,
+              },
+            ],
+            max_tokens: 300,
+          }),
+        },
+      );
+
+      if (!response.ok) {
+        throw new Error("API 요청 실패");
+      }
+
+      const data = await response.json();
+      setAnalysis(data.choices[0].message.content);
+    } catch (error) {
+      console.error("Error:", error);
+      setAnalysis(
+        "죄송합니다. 분석 중 오류가 발생했습니다. 다시 시도해주세요.",
+      );
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
-    <Router>
-      <LoginPage />
-      <Routes>
-        <Route path="member/kko" element={<After />}></Route>
-      </Routes>
-    </Router>
+    <div className="App">
+      <header className="App-header">
+        <h1>💭 기분 분석 서비스</h1>
+        <p>현재 기분을 입력하면 AI가 분석해드려요</p>
+      </header>
+
+      <div className="mood-container">
+        <form onSubmit={handleSubmit} className="mood-form">
+          <div className="input-group">
+            <label htmlFor="mood-input">
+              현재 기분을 자유롭게 표현해주세요:
+            </label>
+            <textarea
+              id="mood-input"
+              value={mood}
+              onChange={e => setMood(e.target.value)}
+              placeholder="예: 오늘 회사에서 상사한테 혼났는데, 집에 와서도 계속 신경 쓰여요..."
+              disabled={isLoading}
+              rows="4"
+            />
+          </div>
+          <button type="submit" disabled={isLoading || !mood.trim()}>
+            {isLoading ? "분석 중..." : "기분 분석하기"}
+          </button>
+        </form>
+
+        {isLoading && (
+          <div className="loading">
+            <div className="spinner"></div>
+            <p>AI가 당신의 기분을 분석하고 있어요...</p>
+          </div>
+        )}
+
+        {analysis && !isLoading && (
+          <div className="analysis-result">
+            <h3>📊 기분 분석 결과</h3>
+            <div className="analysis-content">
+              {analysis.split("\n").map((line, index) => (
+                <p key={index}>{line}</p>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
   );
 }
 
 export default App;
 ```
 
-## 7. Recoil 활용해 보기
-
-- /src/atoms/kkologinAton.js 파일생성
-
-```js
-const { atom } = require("recoil");
-
-export const KKOLgoinAtom = atom({
-  key: "KKOLgoinAtom",
-  default: { id: "", nickname: "", thumbnail_image_url: "", email: "" },
-});
-```
-
-## 8. 로그아웃 처리
+## 5. 옵션 참조용
 
 ```jsx
-import { useEffect, useState } from "react";
-import { useNavigate, useSearchParams } from "react-router-dom";
-import { getAccessToken, getMemberWithAccessToken } from "../../kko/kkoapi";
-import { useRecoilState } from "recoil";
-import { KKOLoginAtom } from "../../atoms/kkoLoginAtom";
+import { useState } from "react";
 
-const After = () => {
-  // 사용자 정보 관리
-  const [userInfo, setUserInfo] = useRecoilState(KKOLoginAtom);
+function App() {
+  // 사용자의 기분을 글로써 입력하는 state
+  const [mood, setMood] = useState("");
 
-  // 카카오 인증키 알아내기
-  const [URLSearchParams, setURLSearchParams] = useSearchParams();
-  const authCode = URLSearchParams.get("code");
+  // OpenAI 에서 분석한 내용 출력 state
+  const [analysis, setAnalysis] = useState("");
 
-  // 인가 키를 받아서 액세스 토큰을 요청한다.
-  const getAccessTokenCall = async () => {
-    const accessKey = await getAccessToken(authCode);
-    // console.log("accessKey : ", accessKey);
-    // 사용자 정보 호출
-    const info = await getMemberWithAccessToken(accessKey);
-    console.log(info);
-    setUserInfo({
-      id: info.id,
-      nickname: info.kakao_account.profile.nickname,
-      thumbnail_image_url: info.kakao_account.profile.thumbnail_image_url,
-      email: info.kakao_account.email,
-    });
+  // 분석하는 비동기로 진행이 됨. 로딩 상태 관리
+  const [isLoading, setIsLoading] = useState(false);
+
+  // 사용자가 form 에 입력한 내용을 submit 했을 때 실행됨.
+  // 비동기로 진행되므로 async .... await... 사용함.
+
+  const handleSubmit = async e => {
+    e.preventDefault(); // 웹브라우저 새로고침 방지
+
+    // 감정을 입력하지 않은 공백 상태라면 함수를 종료
+    if (!mood.trim()) return;
+
+    // 로딩창을 보여줌.
+    setIsLoading(true);
+    // 기존 분석글을 공백으로 출력
+    setAnalysis("");
+
+    try {
+      // fetch 로 데이터를 전달 즉, request 하고, response 대기
+      const response = await fetch(
+        "https://api.openai.com/v1/chat/completions",
+        {
+          method: "POST", // 글을 보냈다.
+          // 옵션들
+          // 답변의 길이를 제한함. 500 이상이면 긴 답변
+          max_tokens: 500,
+          // 창의적인 답변
+          // 0 에 가까울수로 딱딱하고 정확한 표현
+          // 1 에 가까울수로 부드럽고 창의적 표현
+          // 2 에 가까울수로 자유롭고 어뚱한 표현
+          temperature: 2,
+          // 확률선택
+          // 1 : 모든 단어 중에서 고름
+          // 0.5 : 확륭이 높은 단어 몇 개 중에서만 고름
+          top_p: 1,
+          // 몇 개의 답을 할지
+          // 3 가지 스타일의 답변을 준다.
+          n: 3,
+          // 새로운 주제를 GPT 가 제시할지 말지 주는 점수
+          presence_penalty: 2.0,
+          // 반복 방지로서 동일한 단어가 계속 반복되지 않도록 제어
+          frequency_penalty: 0.5,
+
+          // 아래 항목은 어떠한 형태로 내용을 보냈다.
+          headers: {
+            "Content-Type": "application/json", // JSON 형태이다.
+            // 나의 자격 증명으로서 허가된 키로 요청한다.
+            Authorization: `Bearer ${process.env.REACT_APP_OPENAI_API_KEY}`,
+          },
+          // 아래는 실제로 보낼 내용
+          // JSON.stringify: JSON 글자로 변환한다.
+          body: JSON.stringify({
+            // ChatGPT 의 엔진 종류
+            // : gpt-3.5-turbo(빠르고 저렴)
+            // : gpt-4(더 똑똑하고 이해력 높음 - 복잡한 문제 해결)
+            // : gpt-o(텍스트, 이미지, 음성까지 처리 - 사진으로 설명)
+            model: "gpt-3.5-turbo",
+            // 필요로 한 프롬프트를 전달함
+            messages: [
+              {
+                role: "system", // ChatGPT 역할 부여
+                content:
+                  "당신은 감정 분석 전문가입니다. 사용자의 기분을 분석하고 따뜻하고 건설적인 조언을 제공해주세요. 한국어로 답변해주세요.",
+              },
+              {
+                role: "user", // 사용자 입력내용을 작성해줌.
+                content: `한글로 답변을 주는 분석으로 해줘. 다음과 같은 기분을 분석해주세요: "${mood}"`,
+              },
+            ],
+          }),
+        },
+      );
+
+      if (!response.ok) {
+        throw new Error("API 요청 실패");
+      }
+
+      const data = await response.json();
+      setAnalysis(data.choices[0].message.content);
+    } catch (error) {
+      console.error("Error:", error);
+      setAnalysis(
+        "죄송합니다. 분석 중 오류가 발생했습니다. 다시 시도해주세요.",
+      );
+    } finally {
+      setIsLoading(false);
+    }
   };
 
-  useEffect(() => {
-    getAccessTokenCall();
-  }, [authCode]);
-
-  const navigate = useNavigate();
-  useEffect(() => {
-    if (!userInfo.id) {
-      navigate("/");
-    }
-  }, []);
   return (
-    <div>
-      <h1>KKO 로그인 후 </h1>
-      <h2>{authCode}</h2>
-      <div>닉네임 : {userInfo.nickname}</div>
-      <div>이메일 : {userInfo.email}</div>
-      <div>
-        <img src={userInfo.thumbnail_image_url} />
+    <div className="App">
+      <header className="App-header">
+        <h1>💭 기분 분석 서비스</h1>
+        <p>현재 기분을 입력하면 AI가 분석해드려요</p>
+      </header>
+
+      <div className="mood-container">
+        <form onSubmit={handleSubmit} className="mood-form">
+          <div className="input-group">
+            <label htmlFor="mood-input">
+              현재 기분을 자유롭게 표현해주세요:
+            </label>
+            <textarea
+              id="mood-input"
+              value={mood}
+              onChange={e => setMood(e.target.value)}
+              placeholder="예: 오늘 회사에서 상사한테 혼났는데, 집에 와서도 계속 신경 쓰여요..."
+              disabled={isLoading}
+              rows="4"
+            />
+          </div>
+          <button type="submit" disabled={isLoading || !mood.trim()}>
+            {isLoading ? "분석 중..." : "기분 분석하기"}
+          </button>
+        </form>
+
+        {isLoading && (
+          <div className="loading">
+            <div className="spinner"></div>
+            <p>AI가 당신의 기분을 분석하고 있어요...</p>
+          </div>
+        )}
+
+        {analysis && !isLoading && (
+          <div className="analysis-result">
+            <h3>📊 기분 분석 결과</h3>
+            <div className="analysis-content">
+              {analysis.split("\n").map((line, index) => (
+                <p key={index}>{line}</p>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
-};
+}
 
-export default After;
+export default App;
 ```
-
-## 9. 로그인 없이 페이지 접근시 처리
-
-- 강재로 navigate("/login")
-- 조건문으로 안내메시지 및 버턴으로 이동권장
